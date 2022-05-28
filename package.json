@@ -1,0 +1,23 @@
+{
+  "name": "storitest",
+  "version": "1.0.0",
+  "description": "I'm a repository for Stori Test, then I will be destroyed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelvega96/storiTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelvega96/storiTest/issues"
+  },
+  "homepage": "https://github.com/rafaelvega96/storiTest#readme",
+  "devDependencies": {
+    "serverless-plugin-include-dependencies": "^5.0.0",
+    "serverless-python-requirements": "^5.4.0"
+  }
+}

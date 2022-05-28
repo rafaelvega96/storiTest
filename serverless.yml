@@ -1,0 +1,50 @@
+
+service: Stori-Summary-Email
+frameworkVersion: ">=2.24.0"
+plugins:
+  - serverless-python-requirements
+  - serverless-plugin-include-dependencies
+  
+package:
+  patterns:
+    - 'node_modules/**'
+custom:
+  pythonRequirements:
+    pythonBin: python3
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  timeout: 30
+  environment:
+    BUCKET_S3_URL: s3://stori-accounts/txns.csv
+    REGION_NAME: us-east-1
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource:
+            - 'arn:aws:s3:::*/*'
+        - Effect: Allow 
+          Action:
+            - lambda:InvokeFunction
+          Resource: 'arn:aws:lambda:*:*:*'   
+        - Effect: Allow
+          Action:
+            - ses:*
+          Resource: 'arn:aws:ses:us-east-1:*:*'
+functions:
+  StoriEmail:
+    runtime: python3.8
+    handler: controllers/Stori-Summary-Email.action
+    name: Stori-Summary-Email
+    description: Lambda function to read a csv and make a summary information
+  notificationSms:
+    runtime: nodejs12.x
+    handler: controllers/Stori-Send-Email.notification
+    name: Stori-Send-Email
+    description: Lambda function to send a email
+ 

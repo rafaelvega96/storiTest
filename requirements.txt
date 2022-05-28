@@ -1,0 +1,5 @@
+dnspython
+pymongo
+requests
+smart_open
+boto3
