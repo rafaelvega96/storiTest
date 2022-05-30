@@ -1,14 +1,16 @@
 
 from datetime import datetime
+from email.errors import FirstHeaderLineIsContinuationDefect
 from statistics import median
 
 def wordsFrequency(words_list):
     months = []    
     frequency = [words_list.count(word) for word in words_list]
-    for indice, word in enumerate(words_list):
+    frequencydict = dict(list(zip(words_list, frequency)))
+    for key in frequencydict:
         month = {
-            "name": word,
-            "number_transactions" : frequency[indice]
+            "name": key,
+            "number_transactions" : frequencydict[key]
         }   
         months.append(month)
     return months
@@ -33,7 +35,7 @@ def calculateSummary(account_transactions):
             "balance" : balance,
             "average_debit_amount" : average_debit_amount,
             "average_credit_amount" : average_credit_amount,
-            "transactions_month" : number_transactions_by_month
+            "months" : number_transactions_by_month
     }
 
     return summary

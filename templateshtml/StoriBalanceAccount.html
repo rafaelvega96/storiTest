@@ -25,13 +25,13 @@
                                     Balance account
                                 </div>
                                 <div style="text-align: left; font-size: 16px; font-weight: 400; margin: 15px 0px; color: #000000;">
-                                    Total balance is: <span style="font-weight: 700;">$[{{balance}}]</span>
+                                    Total balance is: <span style="font-weight: 700;">${{balance}}</span>
                                 </div>
                                 <div style="text-align: left; font-size: 16px; font-weight: 400; margin: 15px 0px; color: #000000;">
-                                    Average debit amount: <span style="font-weight: 700;">[{{average_debit_amount}}]</span>
+                                    Average debit amount: <span style="font-weight: 700;">{{average_debit_amount}}</span>
                                 </div>
                                 <div style="text-align: left; font-size: 16px; font-weight: 400; margin: 15px 0px; color: #000000;">
-                                    Average credit amount: <span style="font-weight: 700;">[{{average_credit_amount}}]</span>
+                                    Average credit amount: <span style="font-weight: 700;">{{average_credit_amount}}</span>
                                 </div>
                             </td>
                         </tr>
@@ -42,10 +42,18 @@
         <tr>
             <td style="padding: 20px 40px;">
                 <table style="width: 100%;">
-                    {{#each transactions_month}}
                     <tr style="display: flex;align-items: center;background-color: rgba(218, 216, 215, 0.3); border-bottom: 2px solid #ffffff; font-size: 12px; font-weight: 700; color: #191419;">
                         <td style="margin-top: auto; margin-bottom: auto;padding: 10px; width: 20%; text-align: left;">
-                            {{month}}
+                            Month
+                        </td>
+                        <td style="margin-top: auto; margin-bottom: auto;padding: 10px; width: 60%; text-align: center;">
+                            Transactions per month
+                        </td>
+                    </tr>
+                    {{#each months}}
+                    <tr style="display: flex;align-items: center;background-color: rgba(218, 216, 215, 0.3); border-bottom: 2px solid #ffffff; font-size: 12px; font-weight: 700; color: #191419;">
+                        <td style="margin-top: auto; margin-bottom: auto;padding: 10px; width: 20%; text-align: left;">
+                            {{name}}
                         </td>
                         <td style="margin-top: auto; margin-bottom: auto;padding: 10px; width: 60%; text-align: center;">
                             {{number_transactions}}
@@ -67,5 +75,6 @@
                 </table>
             </td>
         </tr>
+        
     </tbody>
 </table>

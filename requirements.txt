@@ -3,3 +3,4 @@ pymongo
 requests
 smart_open
 boto3
+dynamodb_json

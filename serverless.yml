@@ -15,7 +15,7 @@ custom:
 provider:
   name: aws
   lambdaHashingVersion: 20201221
-  timeout: 30
+  timeout: 100
   environment:
     BUCKET_S3_URL: s3://stori-accounts/txns.csv
     REGION_NAME: us-east-1
@@ -36,6 +36,11 @@ provider:
           Action:
             - ses:*
           Resource: 'arn:aws:ses:us-east-1:*:*'
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource: "arn:aws:dynamodb:*:*:table/account_transactions"
+
 functions:
   StoriEmail:
     runtime: python3.8
