@@ -14,6 +14,8 @@ region_name = os.environ['REGION_NAME']
 
 def action(event, context):
     try:
+        req = json.loads(event['body'])
+        print("Request", req)
         # Read s3 to get the csv
         account_transaction = readS3(bucket_s3_url)
         print("account", account_transaction)
@@ -24,7 +26,7 @@ def action(event, context):
         # Invoke lambda function to send a email
         lambda_client = boto3.client('lambda')
         lambda_payload = {"templateName": "StoriBalanceAccount",
-                          "MailTo": ["rafaelvegacan@gmail.com"], "emailCC": ["rafaelvegacan@gmail.com"], "data": summary}
+                          "MailTo": [req['MailTo']], "emailCC": [req['emailCC']], "data": summary}
         payload_json = json.dumps(lambda_payload, indent=4)
         lambda_client.invoke(FunctionName='Stori-Send-Email',
                              InvocationType='RequestResponse',

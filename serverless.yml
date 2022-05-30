@@ -17,7 +17,7 @@ provider:
   lambdaHashingVersion: 20201221
   timeout: 100
   environment:
-    BUCKET_S3_URL: s3://stori-accounts/txns.csv
+    BUCKET_S3_URL: s3://stori-accounts/NuevoDatos.csv
     REGION_NAME: us-east-1
 
   iam:
@@ -47,6 +47,11 @@ functions:
     handler: controllers/Stori-Summary-Email.action
     name: Stori-Summary-Email
     description: Lambda function to read a csv and make a summary information
+    events:
+       - http:
+           path: /stori/summary
+           method: post
+           cors: true
   notificationSms:
     runtime: nodejs12.x
     handler: controllers/Stori-Send-Email.notification

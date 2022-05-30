@@ -69,10 +69,11 @@ Esta recibe la siguiente informacion:
 
 Para el template de correo se utilizo el servicio de SES de amazon el cual nos permite subir un template de correo y llamarlo a traves de la lambda. En la carpeta *templateshtml* se encuentra el template puro y en la carpeta *template* el archivo que se utiliza para desplegar el template. 
 
-## Consideraciones 
+La lambda *Stori-Summary-Email* se encuentra expuesta por medio de un apigateway
 
+
+## Consideraciones 
 - Para desplegar las dos lambdas se utilizo el framework de serverless
-- Las funciones lambdas no se encuentra expuestas a internet por un metodo http
 - Debido a que la consola de aws esta en un modo sandbox, para el envio de correos se debe verificar el correo de la persona a la que se le envie el correo
 
 
